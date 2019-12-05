@@ -1,0 +1,9 @@
+const m=20, n=7;
+var x,y,z;
+function multiply(a, b):
+    var r = a * b;
+    return r;
+begin
+	x:=m; y:=n; 
+    z:=multiply(a, b);
+end.
