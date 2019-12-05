@@ -39,20 +39,21 @@ int base(int l) {
 
 void interprete() {
 	Instruction i; // IR reg.
-	printf("=== start PL0 ===");
+	printf("=== start PL0 ===\n");
 	s[0]=s[1]=s[2]=0; // stack clear
 	do {
 		i=Code[pc++]; // fetch currrent instr.
 		switch (i.f) { // branch by ft. code
-			case Lit: 
-                s[++sp]=i.a; 
+			case Lit:
+                sp++;
+                s[sp]=i.a; 
                 break;
 			case Opr: 
                 switch (i.a) {
                     case 0: 
                         sp=mp-1; 
-                        pc=s[sp+3]; 
-                        mp=s[sp+2]; 
+                        pc=s[sp+4]; 
+                        mp=s[sp+3]; 
                         break; // return
                     case 1: 
                         s[sp]=-s[sp]; 
@@ -62,12 +63,15 @@ void interprete() {
                         s[sp] = s[sp] + s[sp+1];
                         break;						// +
                     case 3:
+                        sp--;
                         s[sp] = s[sp] - s[sp+1];
                         break;						// -
                     case 4:
+                        sp--;
                         s[sp] = s[sp] * s[sp+1]; 
                         break;						// *
                     case 5:
+                        sp--;
                         s[sp] = s[sp] / s[sp+1]; 
                         break;						// div
                     case 6:
@@ -98,6 +102,7 @@ void interprete() {
                         s[sp] = s[sp] > s[sp+1]; 
                         break;						// >
                     case 13:
+                        sp--;
                         s[sp] = s[sp] >= s[sp+1]; 
                         break;						// >=
                 }; 
@@ -106,8 +111,7 @@ void interprete() {
                 s[++sp]=s[base(i.l)+i.a]; 
                 break;
 			case Sto: 
-                s[base(i.l)+i.a]=s[sp]; 
-                printf("%d=\n", s[sp]); 
+                s[base(i.l)+i.a]=s[sp];
                 --sp; 
                 break;
 			case Cal: 
@@ -132,3 +136,10 @@ void interprete() {
 		};
 	} while (pc);  // loop until pc=0
 };
+
+void execute() {
+    interprete();
+    printf("%d\n", s[3]);
+    printf("%d\n", s[4]);
+    printf("%d\n", s[5]);
+}

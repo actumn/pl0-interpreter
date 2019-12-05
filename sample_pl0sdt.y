@@ -411,7 +411,7 @@ int main() {
 
     convert_to_binary();
 
-    // interprete();
+    execute();
 
     return 0;
 }
