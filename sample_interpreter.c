@@ -3,7 +3,7 @@
 #define cxmax 200
 #define stksize 500
 
-typedef enum { Lit, Opr, Lod, Sto, Cal, Int, Jmp, Jpc } fct;
+typedef enum { Lit, Opr, Lod, Sto, Cal, Inc, Jmp, Jpc } fct;
 typedef struct {
 	fct f; // function code
 	int l; // level
@@ -74,8 +74,9 @@ void interprete() {
                         s[sp] = s[sp] % 2; 
                         break;						// odd
                     case 7: 
-                        s[sp] = s[sp] % s[sp+1];
-                        break;                        // mod
+                        printf("End\n");
+                        exit(0);
+                        break;                        // end
                     case 8:
                         sp--;
                         s[sp] = s[sp] == s[sp+1];
@@ -116,14 +117,17 @@ void interprete() {
                 mp=sp+1; 
                 pc=i.a; 
                 break;
-			case Int: 
+			case Inc: 
                 sp=sp+i.a; 
                 break;
 			case Jmp: 
                 pc=i.a; 
                 break;
 			case Jpc: 
-                // JPC???
+                if (s[sp]==0) {
+                    pc=i.a;
+                }
+                sp--;
                 break;                   		// break;
 		};
 	} while (pc);  // loop until pc=0
