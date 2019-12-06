@@ -3,7 +3,7 @@
 #define cxmax 200
 #define stksize 500
 
-typedef enum { Lit, Opr, Lod, Sto, Cal, Inc, Jmp, Jpc } fct;
+typedef enum { ILLEGAL, Lit, Opr, Lod, Sto, Cal, Inc, Jmp, Jpc } fct;
 typedef struct {
 	fct f; // function code
 	int l; // level
@@ -29,10 +29,10 @@ int s[stksize]; // data_store (stack storage) indexed by sp
 //	a: procedure entry pt.
 
 int base(int l) {
-	int b1;
-	b1=mp; // find base l levels down
+	int b1 = mp;// find base l levels down
 	while (l>0) {
-		b1=s[b1]; l--;
+		b1=s[b1]; 
+        l--;
 	}
 	return b1;
 } // end base
@@ -42,7 +42,9 @@ void interprete() {
 	printf("=== start PL0 ===\n");
 	s[0]=s[1]=s[2]=0; // stack clear
 	do {
-		i=Code[pc++]; // fetch currrent instr.
+		i=Code[pc]; // fetch currrent instr.
+    printf("pc: %d, sp: %d, mp: %d, code: %d, lev: %d, a: %d\n", pc, sp, mp, i.f, i.l, i.a);
+        pc++;
 		switch (i.f) { // branch by ft. code
 			case Lit:
                 sp++;
@@ -52,8 +54,8 @@ void interprete() {
                 switch (i.a) {
                     case 0: 
                         sp=mp-1; 
-                        pc=s[sp+4]; 
-                        mp=s[sp+3]; 
+                        pc=s[sp+3]; 
+                        mp=s[sp+2]; 
                         break; // return
                     case 1: 
                         s[sp]=-s[sp]; 
@@ -78,8 +80,7 @@ void interprete() {
                         s[sp] = s[sp] % 2; 
                         break;						// odd
                     case 7: 
-                        printf("End\n");
-                        exit(0);
+                        pc=0;
                         break;                        // end
                     case 8:
                         sp--;
@@ -108,11 +109,12 @@ void interprete() {
                 }; 
                 break;
 			case Lod: 
-                s[++sp]=s[base(i.l)+i.a]; 
+                sp++;
+                s[sp]=s[base(i.l)+i.a]; 
                 break;
 			case Sto: 
                 s[base(i.l)+i.a]=s[sp];
-                --sp; 
+                sp--; 
                 break;
 			case Cal: 
                 s[sp+1]=base(i.l); 
@@ -137,9 +139,14 @@ void interprete() {
 	} while (pc);  // loop until pc=0
 };
 
+void display_stack() {
+    printf("========= Stack =========\n");
+    for (int i = 0; i <= sp; i++) {
+        printf("stack[%d]: %d\n", i, s[i]);
+    }
+}
+
 void execute() {
     interprete();
-    printf("%d\n", s[3]);
-    printf("%d\n", s[4]);
-    printf("%d\n", s[5]);
+    display_stack();
 }

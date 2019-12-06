@@ -293,108 +293,108 @@ void convert_to_binary() {
     for (int i = 0; i < cx; i++) {
         char* code = interExp[i].code;
         if (strcmp(code, "LIT") == 0) {
-            Code[i].f = 0;
+            Code[i].f = Lit;
             Code[i].l = 0;
             Code[i].a = interExp[i].offst;
         }
         else if (strcmp(code, "LOD") == 0) {
-            Code[i].f = 2;
+            Code[i].f = Lod;
             Code[i].l = interExp[i].ld;
             Code[i].a = interExp[i].offst;
         }
         else if (strcmp(code, "STO") == 0) {
-            Code[i].f = 3;
+            Code[i].f = Sto;
             Code[i].l = interExp[i].ld;
             Code[i].a = interExp[i].offst;
         }
         else if (strcmp(code, "CAL") == 0) {
-            Code[i].f = 4;
+            Code[i].f = Cal;
             Code[i].l = interExp[i].ld;
             Code[i].a = find_label(interExp[i].procName);
         }
         else if (strcmp(code, "INC") == 0) {
-            Code[i].f = 5;
+            Code[i].f = Inc;
             Code[i].l = 0;
             Code[i].a = interExp[i].offst;
         }
         else if (strcmp(code, "JMP") == 0) {
-            Code[i].f = 6;
+            Code[i].f = Jmp;
             Code[i].l = 0;
             Code[i].a = find_label(interExp[i].labName);
         }
         else if (strcmp(code, "JPC") == 0) {
-            Code[i].f = 7;
+            Code[i].f = Jpc;
             Code[i].l = 0;
             Code[i].a = find_label(interExp[i].labName);
         }
         else if (strcmp(code, "END") == 0) {
-            Code[i].f = 1;
+            Code[i].f = Opr;
             Code[i].l = 0;
             Code[i].a = 7;
         }
         else {
             if (strcmp(code, "RET") == 0) {
-                Code[i].f = 1;
+                Code[i].f = Opr;
                 Code[i].l = 0;
                 Code[i].a = 0;
             }
             else if (strcmp(code, "NEG") == 0) {
-                Code[i].f = 1;
+                Code[i].f = Opr;
                 Code[i].l = 0;
                 Code[i].a = 1;
             }
             else if (strcmp(code, "ADD") == 0) {
-                Code[i].f = 1;
+                Code[i].f = Opr;
                 Code[i].l = 0;
                 Code[i].a = 2;
             }
             else if (strcmp(code, "SUB") == 0) {
-                Code[i].f = 1;
+                Code[i].f = Opr;
                 Code[i].l = 0;
                 Code[i].a = 3;
             }
             else if (strcmp(code, "MUL") == 0) {
-                Code[i].f = 1;
+                Code[i].f = Opr;
                 Code[i].l = 0;
                 Code[i].a = 4;
             }
             else if (strcmp(code, "DIV") == 0) {
-                Code[i].f = 1;
+                Code[i].f = Opr;
                 Code[i].l = 0;
                 Code[i].a = 5;
             }
             else if (strcmp(code, "ODD") == 0) {
-                Code[i].f = 1;
+                Code[i].f = Opr;
                 Code[i].l = 0;
                 Code[i].a = 6;
             }
             else if (strcmp(code, "EQ") == 0) {
-                Code[i].f = 1;
+                Code[i].f = Opr;
                 Code[i].l = 0;
                 Code[i].a = 8;
             }
             else if (strcmp(code, "NE") == 0) {
-                Code[i].f = 1;
+                Code[i].f = Opr;
                 Code[i].l = 0;
                 Code[i].a = 9;
             }
             else if (strcmp(code, "LT") == 0) {
-                Code[i].f = 1;
+                Code[i].f = Opr;
                 Code[i].l = 0;
                 Code[i].a = 10;
             }
             else if (strcmp(code, "LE") == 0) {
-                Code[i].f = 1;
+                Code[i].f = Opr;
                 Code[i].l = 0;
                 Code[i].a = 11;
             }
             else if (strcmp(code, "GT") == 0) {
-                Code[i].f = 1;
+                Code[i].f = Opr;
                 Code[i].l = 0;
                 Code[i].a = 12;
             }
             else if (strcmp(code, "GE") == 0) {
-                Code[i].f = 1;
+                Code[i].f = Opr;
                 Code[i].l = 0;
                 Code[i].a = 13;
             }

@@ -1,6 +1,3 @@
-%{
-//#include "pl0sdt.tab.h"
-%}
 %option noyywrap
 %%
 [ \t] |
