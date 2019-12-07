@@ -8,7 +8,7 @@ $ flex pl0.l
 $ bison pl0.y
 $ gcc -o pl0 pl0.tab.c -ly -ll
 ### run
-$ pl0 <sample.pl0
+$ ./pl0 <sample.pl0
 ```
 
 ### sample.pl0

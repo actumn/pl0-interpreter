@@ -2,6 +2,8 @@
 %%
 [ \t] |
 "(*"([^*]|"*"+[^*/])*"*)" ;
+"//".*	;
+
 "odd" 		{cp+=3; return(ODD);}
 "const"	 {cp+=5; return(TCONST); }
 "var" 		{cp+=3; return(TVAR); }

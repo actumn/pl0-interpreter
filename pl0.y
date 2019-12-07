@@ -192,7 +192,7 @@ int Lookup(char *name) {
         target = table[target].link;
 
         if (target == -1) {
-            yyerror("cannot find the symbol");
+            yyerror("cannot find the symbol\n");
         }
     }
     
@@ -221,9 +221,10 @@ void ResetBlock() {
 	tx=block[--level];
     for (int i = 0; i < HASHSIZE; i++) {
         int index = hashBucket[i];
-        while(index > tx) {
+        while(index >= tx) {
             index = table[index].link;
         }
+        hashBucket[i] = index;
     }
 	// printf("Resetblock: level=%d,  tindex=%d\n", level, tx);
 }
