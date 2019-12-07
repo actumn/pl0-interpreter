@@ -1,109 +1,111 @@
-0	JMP	LAB0			//	const m=20, n=7;
-						//	var x,y,z;	
-multiply				//  procedure multiply;
-1	JMP	LAB1			//	  var a,b;
+0	JMP	LAB0
+multiply
+1	JMP	LAB1
 LAB1
-2	INT	0	5
-3	LOD	1	3			//    begin a:=x; b:=y; z:=0;
+2	INC	0	5
+3	LOD	1	3
 4	STO	0	3
 5	LOD	1	4
 6	STO	0	4
 7	LIT	0	0
 8	STO	1	5
-LAB2						//  while b>0 do
-9	LOD	0	4	
+LAB2
+9	LOD	0	4
 10	LIT	0	0
 11	GT
-12	JPC	LAB3				// 		begin
-13	LOD	0	4				//  	if odd b then 
+12	JPC	LAB3
+13	LOD	0	4
 14	ODD
 15	JPC	LAB4
-16	LOD	1	5				//			z:=z+a;	
+16	LOD	1	5
 17	LOD	0	3
 18	ADD
 19	STO	1	5
 LAB4
-20	LIT	0	2				//		a:=2*a; 
+20	LIT	0	2
 21	LOD	0	3
 22	MUL
 23	STO	0	3
-24	LOD	0	4				//		b:=b/2;
+24	LOD	0	4
 25	LIT	0	2
 26	DIV
 27	STO	0	4
-28	JMP	LAB2				//		end
+28	JMP	LAB2
 LAB3
-======== sym tbl contents ==========
+======== sym tbl contents line: 11 cp: 3 ==========
+name	type	lvl	offst
 b	1	1	4
 a	1	1	3
-multiply	2	0	1
+multiply	2	0	0
 z	1	0	5
 y	1	0	4
 x	1	0	3
 n	0	0	7
 m	0	0	20
 ---------------------------------------------------
-29	RET					//	end;
-LAB0					//   begin
-30	INT	0	6
-31	LIT	0	20			//   x:=m;
+29	RET
+LAB0
+30	INC	0	6
+31	LIT	0	20
 32	STO	0	3
-33	LIT	0	7			//   y:=n; 
+33	LIT	0	7
 34	STO	0	4
-35	CAL	0	multiply	//   call multiply;
-======== sym tbl contents ==========
-multiply	2	0	1
+35	CAL	0	multiply
+======== sym tbl contents line: 14 cp: 3 ==========
+name	type	lvl	offst
+multiply	2	0	0
 z	1	0	5
 y	1	0	4
 x	1	0	3
 n	0	0	7
 m	0	0	20
 ---------------------------------------------------
-36	END					//   end.
-
+36	END
  ==== valid syntax ====
 ===== Binary Code =====
-0	6	0	30
-1	6	0	2
-2	5	0	5
-3	2	1	3
-4	3	0	3
-5	2	1	4
-6	3	0	4
-7	0	0	0
-8	3	1	5
-9	2	0	4
-10	0	0	0
-11	1	0	12
-12	7	0	29
-13	2	0	4
-14	1	0	6
-15	7	0	20
-16	2	1	5
-17	2	0	3
-18	1	0	2
-19	3	1	5
-20	0	0	2
-21	2	0	3
-22	1	0	4
-23	3	0	3
-24	2	0	4
-25	0	0	2
-26	1	0	5
-27	3	0	4
-28	6	0	9
-29	1	0	0
-30	5	0	6
-31	0	0	20
-32	3	0	3
-33	0	0	7
-34	3	0	4
-35	4	0	1
-36	1	0	7
-37	0	0	0
+0	7	0	30
+1	7	0	2
+2	6	0	5
+3	3	1	3
+4	4	0	3
+5	3	1	4
+6	4	0	4
+7	1	0	0
+8	4	1	5
+9	3	0	4
+10	1	0	0
+11	2	0	12
+12	8	0	29
+13	3	0	4
+14	2	0	6
+15	8	0	20
+16	3	1	5
+17	3	0	3
+18	2	0	2
+19	4	1	5
+20	1	0	2
+21	3	0	3
+22	2	0	4
+23	4	0	3
+24	3	0	4
+25	1	0	2
+26	2	0	5
+27	4	0	4
+28	7	0	9
+29	2	0	0
+30	6	0	6
+31	1	0	20
+32	4	0	3
+33	1	0	7
+34	4	0	4
+35	5	0	1
+36	2	0	7
 ------------------------------
 === start PL0 ===
-=== execution result(global var. contents) ===
-stack:	5	140
-stack:	4	7
-stack:	3	20
+========= Stack =========
+stack[0]: 0
+stack[1]: 0
+stack[2]: 0
+stack[3]: 20
+stack[4]: 7
+stack[5]: 140

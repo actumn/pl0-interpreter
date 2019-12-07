@@ -230,11 +230,11 @@ void ResetBlock() {
 
 void DisplayTable() { 
     printf("======== sym tbl contents line: %d cp: %d ==========\n", ln, cp);
-    printf("name	type	lvl	offst	link\n");
+    printf("name	type	lvl	offst\n");
     int idx=tx;
 	while (--idx>=0) { 
-		printf("%s	%d	%d	%d	%d\n", 
-            table[idx].name, table[idx].type, table[idx].lvl, table[idx].offst, table[idx].link);
+		printf("%s	%d	%d	%d\n", 
+            table[idx].name, table[idx].type, table[idx].lvl, table[idx].offst);
 	}
     printf("---------------------------------------------------\n");
 }

@@ -77,13 +77,13 @@ LAB0
 ```
 ### sample.pl0 symbol table
 ```
-name        type    lvl     offst   link
-multiply    2       0       0       4
-z           1       0       5       -1
-y           1       0       4       -1
-x           1       0       3       -1
-n           0       0       7       -1
-m           0       0       20      -1
+name        type    lvl     offst
+multiply    2       0       0    
+z           1       0       5    
+y           1       0       4    
+x           1       0       3    
+n           0       0       7    
+m           0       0       20   
 ```
 
 ### sample.pl0 binary codes
