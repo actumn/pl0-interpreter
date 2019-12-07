@@ -43,7 +43,6 @@ void interprete() {
 	s[0]=s[1]=s[2]=0; // stack clear
 	do {
 		i=Code[pc]; // fetch currrent instr.
-    printf("pc: %d, sp: %d, mp: %d, code: %d, lev: %d, a: %d\n", pc, sp, mp, i.f, i.l, i.a);
         pc++;
 		switch (i.f) { // branch by ft. code
 			case Lit:

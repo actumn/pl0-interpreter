@@ -161,7 +161,7 @@ Factor: ID			{
 	
 %%
 #include "lex.yy.c"
-#include "sample_interpreter.c"
+#include "interpreter.c"
 
 void yyerror(char* s) {
 	printf("line: %d cp: %d %s\n", ln, cp, s);
