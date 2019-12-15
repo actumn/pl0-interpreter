@@ -127,3 +127,14 @@ line    code    lvl     operand
 35      5       0       1
 36      2       0       7
 ```
+
+### Execute Result
+```
+========= Stack =========
+stack[0]: 0
+stack[1]: 0
+stack[2]: 0
+stack[3]: 20
+stack[4]: 7
+stack[5]: 140
+```
